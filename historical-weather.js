@@ -7,8 +7,9 @@ function searchWeather() {
     const apiKey = "9TWS2LCH9Y7DV5KUXKTMUFPT4";
 
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationInput}/${dateInput}?key=${apiKey}&include=days&unitGroup=uk&elements=temp,humidity`;
+    const url2 = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationInput}/${dateInput}?key=${apiKey}&include=hours&unitGroup=uk&elements=temp,humidity`;
 
-    fetch(url)
+    fetch(url2)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -18,11 +19,19 @@ function searchWeather() {
         .then(data => {
             console.log(data);
             console.log(data.days);
-            const resultElement = document.getElementById("result");
+            const tempElement = document.getElementById("temp");
+            const humElement = document.getElementById("hum");
             const temp = data.days[0].temp;
             const humidity = data.days[0].humidity;
-            resultElement.innerHTML = `temperature: ${temp} \n Humidity: ${humidity}`;
-            
+            tempElement.innerHTML = `${temp}`;
+            humElement.innerHTML = `${humidity}`;
+            const locElement = document.getElementById("loc");
+            locElement.innerHTML = data.resolvedAddress;
+            const latElement = document.getElementById("lat");
+            latElement.innerHTML = data.latitude;
+            const lonElement = document.getElementById("lon");
+            lonElement.innerHTML = data.longitude;
+            populateTable(data.days[0].hours);
             
         })
         .catch(error => {
@@ -30,4 +39,14 @@ function searchWeather() {
             const resultElement = document.getElementById("result");
             resultElement.innerHTML = "An error occurred while fetching weather data.";
         });
+}
+
+function populateTable(lst) {
+  for (let i=0; i<24; i++) {
+    const tempCell = document.getElementById(`temp-${i.toString()}`);
+    const humCell = document.getElementById(`hum-${i.toString()}`);
+
+    tempCell.textContent = lst[i].temp;
+    humCell.textContent = lst[i].humidity;
+  }
 }
