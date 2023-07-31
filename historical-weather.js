@@ -31,13 +31,13 @@ function searchWeather() {
             latElement.innerHTML = data.latitude;
             const lonElement = document.getElementById("lon");
             lonElement.innerHTML = data.longitude;
+            const tzElement = document.getElementById("tz");
+            tzElement.innerHTML = data.timezone;
             populateTable(data.days[0].hours);
             
         })
         .catch(error => {
             console.error('Error:', error);
-            const resultElement = document.getElementById("result");
-            resultElement.innerHTML = "An error occurred while fetching weather data.";
         });
 }
 
@@ -50,3 +50,10 @@ function populateTable(lst) {
     humCell.textContent = lst[i].humidity;
   }
 }
+
+function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+        searchWeather();
+    }
+}
+document.addEventListener("keydown", handleKeyPress);
