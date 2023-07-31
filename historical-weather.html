@@ -10,6 +10,17 @@
             align-items: center;
             height: 100vh;
         }
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -22,8 +33,159 @@
 
     <button onclick="searchWeather()">Search</button>
 
-    <p id="result"></p>
+    <table>
+    	<tr>
+    		<td>Address</td>
+    		<td id="loc"></td>
+    	</tr>
+    	<tr>
+    		<td>Latitude</td>
+    		<td id="lat"></td>
+    	</tr>
+    	<tr>
+    		<td>Longitude</td>
+    		<td id="lon"></td>
+    	</tr>
+    	<tr>
+    		<td>Average Temperature</td>
+    		<td id="temp"></td>
+    	</tr>
+    	<tr>
+    		<td>Average Humidity</td>
+    		<td id="hum"></td>
+    	</tr>
+	</table>
+
+	<table>
+        <tr>
+            <th>Hour</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+        </tr>
+        <tr>
+            <td>00:00</td>
+            <td id="temp-0"></td>
+            <td id="hum-0"></td>
+        </tr>
+        <tr>
+            <td>01:00</td>
+            <td id="temp-1"></td>
+            <td id="hum-1"></td>
+        </tr>
+        <tr>
+            <td>02:00</td>
+            <td id="temp-2"></td>
+            <td id="hum-2"></td>
+        </tr>
+        <tr>
+            <td>03:00</td>
+            <td id="temp-3"></td>
+            <td id="hum-3"></td>
+        </tr>
+        <tr>
+            <td>04:00</td>
+            <td id="temp-4"></td>
+            <td id="hum-4"></td>
+        </tr>
+        <tr>
+            <td>05:00</td>
+            <td id="temp-5"></td>
+            <td id="hum-5"></td>
+        </tr>        
+        <tr>
+            <td>06:00</td>
+            <td id="temp-6"></td>
+            <td id="hum-6"></td>
+        </tr>
+        <tr>
+            <td>07:00</td>
+            <td id="temp-7"></td>
+            <td id="hum-7"></td>
+        </tr>
+        <tr>
+            <td>08:00</td>
+            <td id="temp-8"></td>
+            <td id="hum-8"></td>
+        </tr>        
+        <tr>
+            <td>09:00</td>
+            <td id="temp-9"></td>
+            <td id="hum-9"></td>
+        </tr>
+        <tr>
+            <td>10:00</td>
+            <td id="temp-10"></td>
+            <td id="hum-10"></td>
+        </tr>
+        <tr>
+            <td>11:00</td>
+            <td id="temp-11"></td>
+            <td id="hum-11"></td>
+        </tr>        
+        <tr>
+            <td>12:00</td>
+            <td id="temp-12"></td>
+            <td id="hum-12"></td>
+        </tr>
+        <tr>
+            <td>13:00</td>
+            <td id="temp-13"></td>
+            <td id="hum-13"></td>
+        </tr>
+        <tr>
+            <td>14:00</td>
+            <td id="temp-14"></td>
+            <td id="hum-14"></td>
+        </tr>        
+        <tr>
+            <td>15:00</td>
+            <td id="temp-15"></td>
+            <td id="hum-15"></td>
+        </tr>
+        <tr>
+            <td>16:00</td>
+            <td id="temp-16"></td>
+            <td id="hum-16"></td>
+        </tr>
+        <tr>
+            <td>17:00</td>
+            <td id="temp-17"></td>
+            <td id="hum-17"></td>
+        </tr>        
+        <tr>
+            <td>18:00</td>
+            <td id="temp-18"></td>
+            <td id="hum-18"></td>
+        </tr>
+        <tr>
+            <td>19:00</td>
+            <td id="temp-19"></td>
+            <td id="hum-19"></td>
+        </tr>
+        <tr>
+            <td>20:00</td>
+            <td id="temp-20"></td>
+            <td id="hum-20"></td>
+        </tr>        
+        <tr>
+            <td>21:00</td>
+            <td id="temp-21"></td>
+            <td id="hum-21"></td>
+        </tr>
+        <tr>
+            <td>22:00</td>
+            <td id="temp-22"></td>
+            <td id="hum-22"></td>
+        </tr>
+        <tr>
+            <td>23:00</td>
+            <td id="temp-23"></td>
+            <td id="hum-23"></td>
+        </tr>
+    </table>
 
     <script src="historical-weather.js"></script>
+
+
 </body>
 </html>
