@@ -34,6 +34,7 @@ function searchWeather() {
             const tzElement = document.getElementById("tz");
             tzElement.innerHTML = data.timezone;
             populateTable(data.days[0].hours);
+            setDate(locationInput, dateInput);
             
         })
         .catch(error => {
@@ -41,13 +42,33 @@ function searchWeather() {
         });
 }
 
-function populateTable(lst) {
-  for (let i=0; i<24; i++) {
-    const tempCell = document.getElementById(`temp-${i.toString()}`);
-    const humCell = document.getElementById(`hum-${i.toString()}`);
+function setDate(loc, date) {
+    const currentDate = new Date();
+    const linkElement = document.getElementById("link");
+    if (new Date(date) < currentDate) {
+        linkElement.innerHTML = `https://www.visualcrossing.com/weather-history/${loc}/metric/${date}`;
+    } else {
+        linkElement.innerHTML = `https://www.visualcrossing.com/weather-forecast/${loc}`;        
+    }
+}
 
-    tempCell.textContent = lst[i].temp;
-    humCell.textContent = lst[i].humidity;
+function populateTable(lst) {
+  if (typeof lst == 'undefined') {
+    for (let i=0; i<24; i++) {
+      const tempCell = document.getElementById(`temp-${i.toString()}`);
+      const humCell = document.getElementById(`hum-${i.toString()}`);
+      tempCell.textContent = '';
+      humCell.textContent = '';
+    }
+  }
+  else {
+    for (let i=0; i<24; i++) {
+      const tempCell = document.getElementById(`temp-${i.toString()}`);
+      const humCell = document.getElementById(`hum-${i.toString()}`);
+
+      tempCell.textContent = lst[i].temp;
+      humCell.textContent = lst[i].humidity;
+    }
   }
 }
 
@@ -56,4 +77,5 @@ function handleKeyPress(event) {
         searchWeather();
     }
 }
+
 document.addEventListener("keydown", handleKeyPress);
